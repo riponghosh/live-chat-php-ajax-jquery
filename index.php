@@ -10,8 +10,9 @@ session_start();
 
 if(!isset($_SESSION['user_id']))
 {
- header('location:login.php');
+ header("location:login.php");
 }
+
 ?>
 
 <html>  
@@ -31,9 +32,32 @@ if(!isset($_SESSION['user_id']))
    
    <div class="table-responsive">
     <h4 align="center">Online User</h4>
-    <p align="right">Hi - <?php echo $_SESSION['username']; ?> - <a href="logout.php">Logout</a></p>
-    
+    <p align="right">Hi - <?php echo $_SESSION['username'];  ?> - <a href="logout.php">Logout</a></p>
+    <div id="user_details"></div>
    </div>
   </div>
     </body>  
 </html>  
+
+
+
+
+<script>  
+$(document).ready(function(){
+
+ fetch_user();
+
+ function fetch_user()
+ {
+  $.ajax({
+   url:"fetch_user.php",
+   method:"POST",
+   success:function(data){
+    $('#user_details').html(data);
+   }
+  })
+ }
+ 
+});  
+</script>
+
