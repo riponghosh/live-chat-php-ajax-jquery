@@ -1,7 +1,3 @@
-<!--
-//index.php
-!-->
-
 <?php
 
 include('database_connection.php');
@@ -47,6 +43,11 @@ $(document).ready(function(){
 
  fetch_user();
 
+ setInterval(function(){
+  update_last_activity();
+  fetch_user();
+ }, 5000);
+
  function fetch_user()
  {
   $.ajax({
@@ -57,7 +58,17 @@ $(document).ready(function(){
    }
   })
  }
+
+ function update_last_activity()
+ {
+  $.ajax({
+   url:"update_last_activity.php",
+   success:function()
+   {
+
+   }
+  })
+ }
  
 });  
 </script>
-
