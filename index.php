@@ -83,7 +83,7 @@ $(document).ready(function(){
   modal_content += fetch_user_chat_history(to_user_id);
   modal_content += '</div>';
   modal_content += '<div class="form-group">';
-  modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
+  modal_content += '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control chat_message"></textarea>';
   modal_content += '</div><div class="form-group" align="right">';
   modal_content+= '<button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button></div></div>';
   $('#user_model_details').html(modal_content);
@@ -138,7 +138,32 @@ $(document).ready(function(){
  $(document).on('click', '.ui-button-icon', function(){
   $('.user_dialog').dialog('destroy').remove();
  });
+
+ $(document).on('focus', '.chat_message', function(){
+  var is_type = 'yes';
+  $.ajax({
+   url:"update_is_type_status.php",
+   method:"POST",
+   data:{is_type:is_type},
+   success:function()
+   {
+
+   }
+  })
+ });
+
+ $(document).on('blur', '.chat_message', function(){
+  var is_type = 'no';
+  $.ajax({
+   url:"update_is_type_status.php",
+   method:"POST",
+   data:{is_type:is_type},
+   success:function()
+   {
+    
+   }
+  })
+ });
  
 });  
 </script>
-
