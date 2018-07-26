@@ -20,9 +20,9 @@ $result = $statement->fetchAll();
 $output = '
 <table class="table table-bordered table-striped">
  <tr>
-  <td>Username</td>
-  <td>Status</td>
-  <td>Action</td>
+  <th>Username</th>
+  <th>Status</th>
+  <th>Action</th>
  </tr>
 ';
 
@@ -42,7 +42,7 @@ foreach($result as $row)
  }
  $output .= '
  <tr>
-  <td>'.$row['username'].'</td>
+  <td>'.$row['username'].' '.count_unseen_message($row['user_id'], $_SESSION['user_id'], $connect).'</td>
   <td>'.$status.'</td>
   <td><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['user_id'].'" data-tousername="'.$row['username'].'">Start Chat</button></td>
  </tr>
