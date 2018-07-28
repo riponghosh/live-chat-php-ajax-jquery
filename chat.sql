@@ -96,3 +96,4 @@ ALTER TABLE `login_details`
   MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER DATABASE chat CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE chat_message CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
